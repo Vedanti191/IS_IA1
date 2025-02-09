@@ -1,0 +1,137 @@
+vedanti@Vedanti:~$ sudo apt install curl gnupg2 build-essential libssl-dev libpq-dev -y4
+[sudo] password for vedanti:
+E: Command line option '4' [from -y4] is not understood in combination with the other options.
+vedanti@Vedanti:~$ sudo apt install curl gnupg2 build-essential libssl-dev libpq-dev -y
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+curl is already the newest version (8.5.0-2ubuntu10.6).
+curl set to manually installed.
+build-essential is already the newest version (12.10ubuntu1).
+build-essential set to manually installed.
+The following package was automatically installed and is no longer required:
+  libllvm17t64
+Use 'sudo apt autoremove' to remove it.
+The following additional packages will be installed:
+  libpq5
+Suggested packages:
+  postgresql-doc-16 libssl-doc
+The following NEW packages will be installed:
+  gnupg2 libpq-dev libpq5 libssl-dev
+0 upgraded, 4 newly installed, 0 to remove and 0 not upgraded.
+Need to get 4748 B/2704 kB of archives.
+After this operation, 14.4 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu noble/universe amd64 gnupg2 all 2.4.4-2ubuntu17 [4748 B]
+Fetched 4748 B in 1s (8529 B/s)
+Selecting previously unselected package libpq5:amd64.
+(Reading database ... 47775 files and directories currently installed.)
+Preparing to unpack .../libpq5_16.6-0ubuntu0.24.04.1_amd64.deb ...
+Unpacking libpq5:amd64 (16.6-0ubuntu0.24.04.1) ...
+Selecting previously unselected package libssl-dev:amd64.
+Preparing to unpack .../libssl-dev_3.0.13-0ubuntu3.4_amd64.deb ...
+Unpacking libssl-dev:amd64 (3.0.13-0ubuntu3.4) ...
+Selecting previously unselected package libpq-dev.
+Preparing to unpack .../libpq-dev_16.6-0ubuntu0.24.04.1_amd64.deb ...
+Unpacking libpq-dev (16.6-0ubuntu0.24.04.1) ...
+Selecting previously unselected package gnupg2.
+Preparing to unpack .../gnupg2_2.4.4-2ubuntu17_all.deb ...
+Unpacking gnupg2 (2.4.4-2ubuntu17) ...
+Setting up gnupg2 (2.4.4-2ubuntu17) ...
+Setting up libpq5:amd64 (16.6-0ubuntu0.24.04.1) ...
+Setting up libssl-dev:amd64 (3.0.13-0ubuntu3.4) ...
+Setting up libpq-dev (16.6-0ubuntu0.24.04.1) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.4) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+vedanti@Vedanti:~$ curl https://raw.githubusercontent.com/rapid7/metasploit-framework/master/msfinstall > msfinstall
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    14  100    14    0     0     33      0 --:--:-- --:--:-- --:--:--    33
+vedanti@Vedanti:~$ chmod 755 msfinstall
+vedanti@Vedanti:~$ sudo ./msfinstall
+./msfinstall: 1: 404:: not found
+vedanti@Vedanti:~$ sudo apt install metasploit-framework -y
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+
+No apt package "metasploit-framework", but there is a snap with that name.
+Try "snap install metasploit-framework"
+
+E: Unable to locate package metasploit-framework
+vedanti@Vedanti:~$ sudo snap install metasploit-framework -y
+error: unknown flag `y'
+vedanti@Vedanti:~$ sudo snap install metasploit-framework
+2025-02-09T17:49:49Z INFO Waiting for automatic snapd restart...
+metasploit-framework v6.4.44-dev from Jitendra Patro (jitpatro) installed
+vedanti@Vedanti:~$ msfconsole --version
+
+ ** Welcome to Metasploit Framework Initial Setup **
+    Please answer a few questions to get started.
+
+
+Would you like to use and setup a new database (recommended)? yes
+Running the 'init' command for the database:
+Creating database at /home/vedanti/snap/metasploit-framework/common/.msf4/db
+Creating db socket file at /home/vedanti/snap/metasploit-framework/common
+Starting database at /home/vedanti/snap/metasploit-framework/common/.msf4/db...waiting for server to start....success
+Creating database users
+ done
+server started
+Writing client authentication configuration file /home/vedanti/snap/metasploit-framework/common/.msf4/db/pg_hba.conf
+Stopping database at /home/vedanti/snap/metasploit-framework/common/.msf4/db
+Starting database at /home/vedanti/snap/metasploit-framework/common/.msf4/db...waiting for server to start.... done
+server started
+success
+Creating initial database schema
+Database initialization successful
+
+ ** Metasploit Framework Initial Setup Complete **
+
+This copy of metasploit-framework is more than two weeks old.
+ Consider running 'msfupdate' to update to the latest version.
+Framework Version: 6.4.44-dev-
+vedanti@Vedanti:~$ which msfconsole
+/snap/bin/msfconsole
+vedanti@Vedanti:~$ ifconfig
+Command 'ifconfig' not found, but can be installed with:
+sudo apt install net-tools
+vedanti@Vedanti:~$ sudo apt install net-tools
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following package was automatically installed and is no longer required:
+  libllvm17t64
+Use 'sudo apt autoremove' to remove it.
+The following NEW packages will be installed:
+  net-tools
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 204 kB of archives.
+After this operation, 811 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu noble/main amd64 net-tools amd64 2.10-0.1ubuntu4 [204 kB]
+Fetched 204 kB in 17s (12.2 kB/s)
+Selecting previously unselected package net-tools.
+(Reading database ... 47961 files and directories currently installed.)
+Preparing to unpack .../net-tools_2.10-0.1ubuntu4_amd64.deb ...
+Unpacking net-tools (2.10-0.1ubuntu4) ...
+Setting up net-tools (2.10-0.1ubuntu4) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+vedanti@Vedanti:~$ ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.19.122.211  netmask 255.255.240.0  broadcast 172.19.127.255
+        inet6 fe80::215:5dff:fe64:acbd  prefixlen 64  scopeid 0x20<link>
+        ether 00:15:5d:64:ac:bd  txqueuelen 1000  (Ethernet)
+        RX packets 757822  bytes 1134296037 (1.1 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 85559  bytes 6162481 (6.1 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 3122  bytes 545736 (545.7 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 3122  bytes 545736 (545.7 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+vedanti@Vedanti:~$

